@@ -7,7 +7,7 @@ async function sendLead(name, phone, formName = "Форма сайта") {
     body: JSON.stringify({
       name: name,
       phone: phone,
-      form: formName,
+      form: String(formName),
       page: window.location.href
     })
   });
