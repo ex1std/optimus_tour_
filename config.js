@@ -4,6 +4,6 @@
 // 3) Напишите боту /start, откройте https://api.telegram.org/bot<BOT_TOKEN>/getUpdates и возьмите chat.id.
 // ВАЖНО: если токен уже светился в переписке/скринах, перевыпустите его в BotFather командой /revoke.
 window.CONFIG = {
-  BOT_TOKEN: "PASTE_BOT_TOKEN_HERE",
-  CHAT_ID: "PASTE_CHAT_ID_HERE"
+  BOT_TOKEN: "8941186727:AAERV6GN5AvVGX9px5ucT1j9m7KWhCd05UU",
+  CHAT_ID: "5532841300"
 };
