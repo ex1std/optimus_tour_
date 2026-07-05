@@ -1558,6 +1558,40 @@ img,svg,video,canvas,iframe{max-width:100%;}
       input.addEventListener('blur',()=>{if(!normalizePhoneDigits(input.value).length) input.value='';});
     });
   }
+  function getLeadSource(form){
+    const hash = window.location.hash || '';
+    const route = hash.replace(/^#\/?/, '');
+    const routeKey = route.split('/')[0] || 'home';
+
+    let formPlace = 'Форма сайта';
+    if(form?.closest('#modal') || form?.closest('.booking-modal')){
+      formPlace = 'Модальное окно: подбор тура';
+    } else if(form?.closest('.contact-callback')){
+      formPlace = 'Блок контактов: обратная связь';
+    } else if(form?.closest('.cta')){
+      formPlace = 'CTA-блок: бесплатная консультация';
+    }
+
+    const tourMatch = hash.match(/\/tour\/([^/?#]+)/);
+    if(tourMatch){
+      const tourId = decodeURIComponent(tourMatch[1]);
+      const tour = tours.find(t => t.id === tourId);
+      return `${formPlace}; источник: страница тура — ${tour?.title || tourId}`;
+    }
+
+    const pageNames = {
+      home: 'Главная страница',
+      world: 'Раздел: Весь Мир',
+      russia: 'Раздел: Россия',
+      moscow: 'Раздел: Москва',
+      kids: 'Раздел: Школьники',
+      podmoskovye: 'Раздел: Подмосковье',
+      reviews: 'Раздел: Отзывы',
+      contacts: 'Раздел: Контакты'
+    };
+
+    return `${formPlace}; источник: ${pageNames[routeKey] || 'Страница сайта'}`;
+  }
   function bind(){
     bindPhoneMask();
     document.querySelectorAll('[data-open-modal]').forEach(x=>x.onclick=()=>modal.classList.add('open'));
@@ -1578,7 +1612,7 @@ img,svg,video,canvas,iframe{max-width:100%;}
       try{
         if(btn){btn.disabled=true;btn.textContent='Отправляем...';}
         if(typeof sendLead!=='function')throw new Error('telegram.js не загружен или sendLead не найден');
-        await sendLead(name,phone,{page:location.href});
+        await sendLead(name,phone,getLeadSource(f));
         modal.classList.remove('open');
         toast.textContent='Заявка отправлена. Мы свяжемся с вами.';
         toast.classList.add('show');
