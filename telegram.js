@@ -1,41 +1,22 @@
-async function sendLead(name, phone, meta = {}) {
-  if (!window.CONFIG) {
-    throw new Error('Не найден config.js');
-  }
-
-  const token = String(CONFIG.BOT_TOKEN || '').trim();
-  const chatId = String(CONFIG.CHAT_ID || '').trim();
-
-  if (!token || token.includes('PASTE_') || !chatId || chatId.includes('PASTE_')) {
-    throw new Error('Заполните BOT_TOKEN и CHAT_ID в config.js');
-  }
-
-  const page = meta.page ? `
-🌐 Страница: ${meta.page}` : '';
-  const text = `📩 Новая заявка с сайта Optimus Tour
-
-👤 Имя: ${name}
-📞 Телефон: ${phone}${page}`;
-  const url = `https://api.telegram.org/bot${token}/sendMessage`;
-
-  const data = new URLSearchParams();
-  data.append('chat_id', chatId);
-  data.append('text', text);
-  data.append('disable_web_page_preview', 'true');
-
-  const response = await fetch(url, {
-    method: 'POST',
-    body: data
+async function sendLead(name, phone, formName = "Форма сайта") {
+  const response = await fetch(CONFIG.LEAD_ENDPOINT, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      name: name,
+      phone: phone,
+      form: formName,
+      page: window.location.href
+    })
   });
 
-  let result = null;
-  try {
-    result = await response.json();
-  } catch (e) {}
+  const data = await response.json().catch(() => ({}));
 
-  if (!response.ok || !result || !result.ok) {
-    throw new Error(result?.description || `Telegram API error ${response.status}`);
+  if (!response.ok || !data.ok) {
+    throw new Error(data.error || "Не удалось отправить заявку");
   }
 
-  return result;
+  return data;
 }
