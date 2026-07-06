@@ -1433,6 +1433,79 @@ img,svg,video,canvas,iframe{max-width:100%;}
   .mobile-contact-actions{grid-template-columns:1fr 1fr!important;}
   .mobile-contact-actions a:last-child{grid-column:1/-1!important;}
 }
+
+/* --- Footer legal block + privacy link, mobile-ready --- */
+.foot-legal{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:18px;
+  margin-top:18px;
+  padding:22px 24px;
+  border-radius:28px;
+  background:rgba(255,255,255,.055);
+  border:1px solid rgba(255,255,255,.10);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.04);
+}
+.foot-legal-info{
+  display:grid;
+  gap:7px;
+  min-width:0;
+  color:rgba(255,255,255,.74);
+  font-weight:720;
+  line-height:1.45;
+}
+.foot-legal-info strong{
+  display:block;
+  color:#fff;
+  font-size:17px;
+  font-weight:1000;
+}
+.foot-legal-info span{
+  display:block;
+  overflow-wrap:anywhere;
+}
+.privacy-link{
+  flex:0 0 auto;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:48px;
+  padding:13px 18px;
+  border-radius:999px;
+  background:linear-gradient(135deg,#d8aa53,#f5d78d);
+  color:#071127!important;
+  font-weight:1000;
+  white-space:nowrap;
+  box-shadow:0 16px 38px rgba(201,154,62,.22);
+  transition:transform .22s ease, box-shadow .22s ease;
+}
+.privacy-link:hover{
+  transform:translateY(-2px);
+  box-shadow:0 22px 50px rgba(201,154,62,.30);
+}
+@media (max-width:760px){
+  .foot-legal{
+    flex-direction:column!important;
+    align-items:stretch!important;
+    padding:20px!important;
+    border-radius:24px!important;
+  }
+  .foot-legal-info{
+    font-size:14px!important;
+    line-height:1.55!important;
+  }
+  .foot-legal-info strong{
+    font-size:16px!important;
+  }
+  .privacy-link{
+    width:100%!important;
+    min-height:52px!important;
+    text-align:center!important;
+    white-space:normal!important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -1440,7 +1513,7 @@ img,svg,video,canvas,iframe{max-width:100%;}
   <header id="header"><div class="container wide-container"><div class="topbar"><a class="brand logo-brand" href="#/"><img class="brand-logo" src="./logo-v4-transparent.png" alt="Логотип Optimus Tour" width="588" height="451" decoding="async" onerror="this.onerror=null;this.src='./favicon-v4-transparent.png';"><div class="brand-copy"><b>OPTIMUS TOUR</b><span>ЭКСКУРСИОННОЕ БЮРО</span></div></a><nav class="nav" id="nav"><a href="#/" data-link="#/">Главная</a><a href="#/moscow" data-link="#/moscow">Москва</a><a href="#/podmoskovye" data-link="#/podmoskovye">Подмосковье</a><a href="#/russia" data-link="#/russia">Россия</a><a href="#/world" data-link="#/world">Весь Мир</a><a href="#/kids" data-link="#/kids">Школьники</a><a href="#/reviews" data-link="#/reviews">Отзывы</a><a href="#/contacts" data-link="#/contacts">Контакты</a></nav><button class="gold-btn top-cta" data-open-modal>Подберите мне тур</button><button class="menu" id="menuBtn" aria-label="Открыть меню">Меню</button></div></div></header>
   <div class="mobile" id="mobile"><div class="mobile-brand"><img src="./logo-v4-transparent.png" alt="Логотип Optimus Tour" width="588" height="451" decoding="async" onerror="this.onerror=null;this.src='./favicon-v4-transparent.png';"><div><b>OPTIMUS TOUR</b><span>ЭКСКУРСИОННОЕ БЮРО</span></div></div><a href="#/">Главная</a><a href="#/moscow">Москва</a><a href="#/podmoskovye">Подмосковье</a><a href="#/russia">Россия</a><a href="#/world">Весь Мир</a><a href="#/kids">Школьники</a><a href="#/reviews">Отзывы</a><a href="#/contacts">Контакты</a></div>
   <main id="app"></main>
-  <footer><div class="container"><div class="footer-shell"><div class="foot-top"><div class="foot-brand"><img src="./logo-v4-transparent.png" alt="Логотип Optimus Tour" width="588" height="451" decoding="async" onerror="this.onerror=null;this.src='./favicon-v4-transparent.png';"><div><h2>Optimus Tour</h2><p>Более 50 маршрутов по России и всему миру. Экскурсии для детей и взрослых, профессиональные гиды, продуманные программы для групп и индивидуальных гостей.</p></div></div><div class="foot-accent"><span class="foot-pill">Премиальные маршруты</span><span class="foot-pill">Москва · Россия · Мир</span></div></div><div class="foot-grid"><article class="foot-card"><h3>О Компании</h3><p>Организуем обзорные и тематические экскурсии по Москве, школьные программы, поездки по Подмосковью и многодневные туры по России и миру.</p></article><article class="foot-card"><h3>Навигация</h3><div class="foot-links"><a href="#/">Главная</a><a href="#/moscow">Москва</a><a href="#/podmoskovye">Подмосковье</a><a href="#/russia">Россия</a><a href="#/world">Весь Мир</a><a href="#/kids">Школьники</a><a href="#/reviews">Отзывы</a><a href="#/contacts">Контакты</a></div></article><article class="foot-card"><h3>Контакты</h3><p><a href="tel:+79169131495">+7 (916) 913-14-95</a><br><a href="mailto:2270387@mail.ru">2270387@mail.ru</a><br>г. Москва, ул. Большая Тульская, д. 2, пом. 2А, ком. 10</p></article><article class="foot-card"><h3>Соцсети</h3><div class="socials social-tags" style="margin-top:16px"><a href="https://max.ru/join/K3rHmycb6YoARxwxlg14gkA1YhPxdYZcjOTXOIJF2tE" target="_blank" rel="noopener noreferrer">MAX</a><a href="https://chat.whatsapp.com/DESe2Yh3aLMB9qyNt9s2xR?mode=gi_t" target="_blank" rel="noopener noreferrer">WHATSAPP</a><a href="https://t.me/Kovalenko_Iuliia" target="_blank" rel="noopener noreferrer">TELEGRAM</a><a href="https://www.instagram.com/optimus_tour" target="_blank" rel="noopener noreferrer">INSTAGRAM</a><a href="https://vk.com/id711115233" target="_blank" rel="noopener noreferrer">VK</a></div></article></div><div class="foot-bottom"><div class="foot-copy">© Optimus Tour. Экскурсионное бюро — маршруты по Москве, России и миру.</div><button class="gold-btn" data-open-modal>Подберите мне тур</button></div></div></div></footer>
+  <footer><div class="container"><div class="footer-shell"><div class="foot-top"><div class="foot-brand"><img src="./logo-v4-transparent.png" alt="Логотип Optimus Tour" width="588" height="451" decoding="async" onerror="this.onerror=null;this.src='./favicon-v4-transparent.png';"><div><h2>Optimus Tour</h2><p>Более 50 маршрутов по России и всему миру. Экскурсии для детей и взрослых, профессиональные гиды, продуманные программы для групп и индивидуальных гостей.</p></div></div><div class="foot-accent"><span class="foot-pill">Премиальные маршруты</span><span class="foot-pill">Москва · Россия · Мир</span></div></div><div class="foot-grid"><article class="foot-card"><h3>О Компании</h3><p>Организуем обзорные и тематические экскурсии по Москве, школьные программы, поездки по Подмосковью и многодневные туры по России и миру.</p></article><article class="foot-card"><h3>Навигация</h3><div class="foot-links"><a href="#/">Главная</a><a href="#/moscow">Москва</a><a href="#/podmoskovye">Подмосковье</a><a href="#/russia">Россия</a><a href="#/world">Весь Мир</a><a href="#/kids">Школьники</a><a href="#/reviews">Отзывы</a><a href="#/contacts">Контакты</a></div></article><article class="foot-card"><h3>Контакты</h3><p><a href="tel:+79169131495">+7 (916) 913-14-95</a><br><a href="mailto:2270387@mail.ru">2270387@mail.ru</a><br>г. Москва, ул. Большая Тульская, д. 2, пом. 2А, ком. 10</p></article><article class="foot-card"><h3>Соцсети</h3><div class="socials social-tags" style="margin-top:16px"><a href="https://max.ru/join/K3rHmycb6YoARxwxlg14gkA1YhPxdYZcjOTXOIJF2tE" target="_blank" rel="noopener noreferrer">MAX</a><a href="https://chat.whatsapp.com/DESe2Yh3aLMB9qyNt9s2xR?mode=gi_t" target="_blank" rel="noopener noreferrer">WHATSAPP</a><a href="https://t.me/Kovalenko_Iuliia" target="_blank" rel="noopener noreferrer">TELEGRAM</a><a href="https://www.instagram.com/optimus_tour" target="_blank" rel="noopener noreferrer">INSTAGRAM</a><a href="https://vk.com/id711115233" target="_blank" rel="noopener noreferrer">VK</a></div></article></div><div class="foot-legal" aria-label="Юридическая информация"><div class="foot-legal-info"><strong>ООО «Оптимус Тур»</strong><span>ИНН: 7725774942</span><span>ОГРН: 1127747152807</span><span>Юридический адрес: Москва, ул. Большая Тульская д. 2 пом. 2А ком. 10</span></div><a class="privacy-link" href="./privacy.html">Политика конфиденциальности</a></div><div class="foot-bottom"><div class="foot-copy">© Optimus Tour. Экскурсионное бюро — маршруты по Москве, России и миру.</div><button class="gold-btn" data-open-modal>Подберите мне тур</button></div></div></div></footer>
   <div class="modal" id="modal">
     <div class="modal-card booking-modal">
       <button class="close" id="modalClose" aria-label="Закрыть окно">×</button>
